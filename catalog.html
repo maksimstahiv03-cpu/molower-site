@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BlueSpace — каталог квартир</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #f4f8ff;
+        --surface: #ffffff;
+        --primary: #2f6fe3;
+        --primary-dark: #174ea8;
+        --text: #122033;
+        --muted: #6d7a8a;
+        --border: #dce7f8;
+        --shadow: 0 16px 40px rgba(47, 111, 227, 0.12);
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        color: var(--text);
+        background: linear-gradient(135deg, #f8fbff 0%, #eef6ff 100%);
+      }
+      a { text-decoration: none; color: inherit; }
+      .container { width: min(1160px, calc(100% - 32px)); margin: 0 auto; }
+      header { padding: 24px 0 10px; }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(255,255,255,0.85);
+        backdrop-filter: blur(18px);
+        border-radius: 999px;
+        padding: 12px 20px;
+        box-shadow: var(--shadow);
+      }
+      .logo { font-weight: 800; color: var(--primary-dark); }
+      .nav-links { display: flex; gap: 18px; color: var(--muted); font-weight: 500; }
+      .page { padding: 20px 0 40px; }
+      .hero-bar {
+        background: var(--surface);
+        border-radius: 24px;
+        padding: 22px;
+        box-shadow: var(--shadow);
+        margin-bottom: 18px;
+      }
+      .hero-bar h1 { margin: 0 0 8px; font-size: clamp(1.5rem, 3vw, 2rem); }
+      .hero-bar p { margin: 0; color: var(--muted); }
+      .filters {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-top: 16px;
+      }
+      .filters input, .filters select, .filters button {
+        width: 100%;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 12px 14px;
+        font: inherit;
+        background: #fbfdff;
+      }
+      .filters button {
+        background: var(--primary);
+        color: white;
+        border: 0;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+      .card {
+        background: var(--surface);
+        border-radius: 22px;
+        padding: 14px;
+        box-shadow: var(--shadow);
+      }
+      .card img { width: 100%; height: 165px; object-fit: cover; border-radius: 16px; margin-bottom: 12px; }
+      .card h3 { margin: 0 0 6px; font-size: 1rem; }
+      .card p { margin: 0; color: var(--muted); font-size: 0.94rem; }
+      .meta { display: flex; justify-content: space-between; margin-top: 12px; color: var(--primary-dark); font-weight: 600; }
+      footer { padding: 12px 0 36px; color: var(--muted); }
+      @media (max-width: 900px) { .cards { grid-template-columns: 1fr 1fr; } .filters { grid-template-columns: 1fr 1fr; } }
+      @media (max-width: 640px) { .nav-links { display: none; } .cards { grid-template-columns: 1fr; } .filters { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav class="nav">
+          <a href="index.html" class="logo">BlueSpace</a>
+          <div class="nav-links">
+            <a href="catalog.html">Квартири</a>
+            <a href="index.html#about">Про нас</a>
+            <a href="index.html#contact">Контакти</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container page">
+      <section class="hero-bar">
+        <h1>Всі доступні квартири</h1>
+        <p>Обирайте житло за районом, ціною та типом планування.</p>
+        <div class="filters">
+          <input type="text" placeholder="Район" />
+          <select>
+            <option>Будь-яка площа</option>
+            <option>до 70 м²</option>
+            <option>70–100 м²</option>
+            <option>100+ м²</option>
+          </select>
+          <select>
+            <option>Будь-який бюджет</option>
+            <option>до 2.5 млн</option>
+            <option>2.5–4 млн</option>
+            <option>4+ млн</option>
+          </select>
+          <button>Знайти</button>
+        </div>
+      </section>
+
+      <section class="cards">
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=900&q=80" alt="Квартира в центрі" />
+          <h3>Пентхаус з панорамним видом</h3>
+          <p>3 кімнати • 112 м² • Печерськ</p>
+          <div class="meta"><span>5 100 000 ₴</span><span>Преміум</span></div>
+        </article>
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=900&q=80" alt="Сучасна квартира" />
+          <h3>Комфорт у новобудові</h3>
+          <p>2 кімнати • 74 м² • Оболонь</p>
+          <div class="meta"><span>3 240 000 ₴</span><span>Новобудова</span></div>
+        </article>
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=900&q=80" alt="Квартира з вітальні" />
+          <h3>Сімейний варіант біля парку</h3>
+          <p>3 кімнати • 88 м² • Поділ</p>
+          <div class="meta"><span>3 780 000 ₴</span><span>Сімейний</span></div>
+        </article>
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80" alt="Мінімалістична квартира" />
+          <h3>Мінімалістичний лофт</h3>
+          <p>1 кімната • 54 м² • Голосіїв</p>
+          <div class="meta"><span>2 660 000 ₴</span><span>Студія</span></div>
+        </article>
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1448630360428-65456885c650?auto=format&fit=crop&w=900&q=80" alt="Квартира з кухнею" />
+          <h3>Світла квартира з балконом</h3>
+          <p>2 кімнати • 69 м² • Теремки</p>
+          <div class="meta"><span>3 010 000 ₴</span><span>Комфорт</span></div>
+        </article>
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80" alt="Квартира з великою кухнею" />
+          <h3>Розкішний простір для роботи</h3>
+          <p>2 кімнати • 81 м² • Лівий берег</p>
+          <div class="meta"><span>3 540 000 ₴</span><span>Для роботи</span></div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="container">
+      <p>BlueSpace © 2026. Кращі квартири — у одному місці.</p>
+    </footer>
+  </body>
+</html>
