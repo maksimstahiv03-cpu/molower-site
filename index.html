@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BlueSpace — пошук квартир</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f4f8ff;
+        --surface: #ffffff;
+        --primary: #2f6fe3;
+        --primary-dark: #174ea8;
+        --text: #122033;
+        --muted: #6d7a8a;
+        --border: #dce7f8;
+        --shadow: 0 18px 50px rgba(47, 111, 227, 0.12);
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        color: var(--text);
+        background: linear-gradient(135deg, #f8fbff 0%, #eef6ff 100%);
+      }
+
+      a { text-decoration: none; color: inherit; }
+
+      .container {
+        width: min(1160px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      header {
+        padding: 24px 0 18px;
+      }
+
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255,255,255,0.8);
+        border-radius: 999px;
+        padding: 12px 20px;
+        box-shadow: var(--shadow);
+      }
+
+      .logo {
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: var(--primary-dark);
+        letter-spacing: 0.04em;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 18px;
+        color: var(--muted);
+        font-weight: 500;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 28px;
+        align-items: center;
+        padding: 30px 0 40px;
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(2rem, 4vw, 3.3rem);
+        line-height: 1.1;
+        margin: 0 0 14px;
+      }
+
+      .hero-copy p {
+        font-size: 1rem;
+        color: var(--muted);
+        line-height: 1.7;
+        margin: 0 0 22px;
+        max-width: 580px;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 18px;
+        border-radius: 999px;
+        font-weight: 600;
+        transition: transform 160ms ease, box-shadow 160ms ease;
+      }
+
+      .btn:hover { transform: translateY(-2px); }
+
+      .btn-primary {
+        background: var(--primary);
+        color: white;
+        box-shadow: 0 12px 24px rgba(47, 111, 227, 0.22);
+      }
+
+      .btn-secondary {
+        background: var(--surface);
+        color: var(--primary-dark);
+        border: 1px solid var(--border);
+      }
+
+      .hero-card {
+        background: var(--surface);
+        border-radius: 28px;
+        padding: 24px;
+        box-shadow: var(--shadow);
+      }
+
+      .search-box {
+        display: grid;
+        grid-template-columns: 1fr 1fr auto;
+        gap: 12px;
+        margin-top: 16px;
+      }
+
+      .search-box input, .search-box select {
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 13px 14px;
+        font: inherit;
+        color: var(--text);
+        background: #fbfdff;
+      }
+
+      .search-box button {
+        border: 0;
+        border-radius: 14px;
+        padding: 13px 16px;
+        background: var(--primary);
+        color: white;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        margin-top: 24px;
+      }
+
+      .stat {
+        background: #f8fbff;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 14px;
+      }
+
+      .stat strong { display: block; font-size: 1.1rem; color: var(--primary-dark); }
+      .stat span { color: var(--muted); font-size: 0.9rem; }
+
+      .section {
+        padding: 20px 0 36px;
+      }
+
+      .section-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+      }
+
+      .section-title h2 {
+        font-size: 1.2rem;
+        margin: 0;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+
+      .card {
+        background: var(--surface);
+        border-radius: 22px;
+        padding: 16px;
+        box-shadow: var(--shadow);
+      }
+
+      .card img {
+        width: 100%;
+        height: 165px;
+        object-fit: cover;
+        border-radius: 16px;
+        margin-bottom: 12px;
+      }
+
+      .card h3 { margin: 6px 0 6px; font-size: 1rem; }
+      .card p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+      .card .meta { display: flex; justify-content: space-between; margin-top: 12px; color: var(--primary-dark); font-weight: 600; }
+
+      footer {
+        padding: 16px 0 40px;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      @media (max-width: 900px) {
+        .hero { grid-template-columns: 1fr; }
+        .cards { grid-template-columns: 1fr 1fr; }
+      }
+
+      @media (max-width: 640px) {
+        .nav-links { display: none; }
+        .search-box { grid-template-columns: 1fr; }
+        .stats { grid-template-columns: 1fr; }
+        .cards { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav class="nav">
+          <a href="#" class="logo">BlueSpace</a>
+          <div class="nav-links">
+            <a href="#catalog">Квартири</a>
+            <a href="#about">Про нас</a>
+            <a href="#contact">Контакти</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="container hero">
+        <div class="hero-copy">
+          <h1>Знайдіть квартиру, що підходить саме вам</h1>
+          <p>Легкий пошук у сучасних житлових комплексах з прозорими умовами, комфортними плануваннями та швидким бронюванням.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#catalog">Переглянути пропозиції</a>
+            <a class="btn btn-secondary" href="#about">Дізнатися більше</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="section-title">
+            <h2>Пошук квартири</h2>
+            <span style="color: var(--primary); font-weight: 600;">Нові оголошення</span>
+          </div>
+          <div class="search-box">
+            <input type="text" placeholder="Місто або район" />
+            <select>
+              <option>До 2 млн</option>
+              <option>2–3 млн</option>
+              <option>3+ млн</option>
+            </select>
+            <button>Пошук</button>
+          </div>
+          <div class="stats">
+            <div class="stat">
+              <strong>320+</strong>
+              <span>активних об’єктів</span>
+            </div>
+            <div class="stat">
+              <strong>24/7</strong>
+              <span>підтримка</span>
+            </div>
+            <div class="stat">
+              <strong>4.9/5</strong>
+              <span>рейтинг агентів</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="catalog" class="container section">
+        <div class="section-title">
+          <h2>Рекомендовані квартири</h2>
+          <a href="#" style="color: var(--primary); font-weight: 600;">Показати всі</a>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=900&q=80" alt="Сучасна квартира" />
+            <h3>Лофт-апартамент у центрі</h3>
+            <p>2 кімнати • 78 м² • 10 хв від метро</p>
+            <div class="meta">
+              <span>3 450 000 ₴</span>
+              <span>Сучасний</span>
+            </div>
+          </article>
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=900&q=80" alt="Кухня з вікном" />
+            <h3>Світла квартира з балконом</h3>
+            <p>3 кімнати • 96 м² • паркова зона</p>
+            <div class="meta">
+              <span>4 120 000 ₴</span>
+              <span>Люкс</span>
+            </div>
+          </article>
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=900&q=80" alt="Вітальня" />
+            <h3>Комфортний варіант для сім’ї</h3>
+            <p>2 кімнати • 67 м² • підземний паркінг</p>
+            <div class="meta">
+              <span>2 890 000 ₴</span>
+              <span>Новобудова</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="about" class="container section">
+        <div class="section-title">
+          <h2>Чому обирають нас</h2>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <h3>Швидкий підбір</h3>
+            <p>Фільтри підбирають варіанти за бюджетом, районом і площою за лічені секунди.</p>
+          </article>
+          <article class="card">
+            <h3>Надійні пропозиції</h3>
+            <p>Працюємо лише з перевіреними об’єктами та агентствами без прихованих умов.</p>
+          </article>
+          <article class="card">
+            <h3>Особистий підхід</h3>
+            <p>Консультанти допомагають підібрати нерухомість під ваш стиль життя.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact" class="container">
+      <p>BlueSpace © 2026. Пошук квартир у сучасному форматі.</p>
+    </footer>
+  </body>
+</html>
