@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BlueSpace — про нас</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #f4f8ff;
+        --surface: #ffffff;
+        --primary: #2f6fe3;
+        --primary-dark: #174ea8;
+        --text: #122033;
+        --muted: #6d7a8a;
+        --border: #dce7f8;
+        --shadow: 0 16px 40px rgba(47, 111, 227, 0.12);
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; font-family: 'Inter', sans-serif; color: var(--text); background: linear-gradient(135deg, #f8fbff 0%, #eef6ff 100%); }
+      a { text-decoration: none; color: inherit; }
+      .container { width: min(1160px, calc(100% - 32px)); margin: 0 auto; }
+      header { padding: 24px 0 10px; }
+      .nav { display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.85); backdrop-filter: blur(18px); border-radius: 999px; padding: 12px 20px; box-shadow: var(--shadow); }
+      .logo { font-weight: 800; color: var(--primary-dark); }
+      .nav-links { display: flex; gap: 18px; color: var(--muted); font-weight: 500; }
+      .page { padding: 24px 0 48px; }
+      .hero { background: var(--surface); border-radius: 28px; padding: 28px; box-shadow: var(--shadow); margin-bottom: 22px; }
+      .hero h1 { margin: 0 0 10px; font-size: clamp(1.8rem, 3.2vw, 2.4rem); }
+      .hero p { margin: 0; color: var(--muted); line-height: 1.7; max-width: 720px; }
+      .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+      .panel { background: var(--surface); border-radius: 24px; padding: 20px; box-shadow: var(--shadow); }
+      .panel h2 { margin-top: 0; font-size: 1.1rem; }
+      .panel p, .panel li { color: var(--muted); line-height: 1.7; }
+      .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 18px; border-radius: 999px; background: var(--primary); color: white; font-weight: 600; margin-top: 10px; }
+      footer { padding: 10px 0 36px; color: var(--muted); }
+      @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } .nav-links { display: none; } }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav class="nav">
+          <a href="index.html" class="logo">BlueSpace</a>
+          <div class="nav-links">
+            <a href="catalog.html">Квартири</a>
+            <a href="about.html">Про нас</a>
+            <a href="contact.html">Контакти</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container page">
+      <section class="hero">
+        <h1>Про нас</h1>
+        <p>BlueSpace — це платформа, яка допомагає швидко й комфортно знаходити квартири у потрібному районі. Ми об’єднали простий пошук, прозорий процес та персональну підтримку, щоб кожен клієнт відчував впевненість у виборі.</p>
+      </section>
+
+      <section class="grid">
+        <article class="panel">
+          <h2>Чому нам довіряють</h2>
+          <p>Наша команда працює з перевіреними об’єктами, надає актуальні пропозиції та підбирає варіанти під бюджет, площу та стиль життя.</p>
+          <a class="btn" href="catalog.html">Переглянути каталоги</a>
+        </article>
+        <article class="panel">
+          <h2>Наш процес</h2>
+          <ul>
+            <li>Підбір квартир за вашими критеріями</li>
+            <li>Консультація щодо району та бюджету</li>
+            <li>Підтримка на всіх етапах угоди</li>
+          </ul>
+        </article>
+      </section>
+    </main>
+
+    <footer class="container">
+      <p>BlueSpace © 2026. Ваш комфорт — наш пріоритет.</p>
+    </footer>
+  </body>
+</html>
